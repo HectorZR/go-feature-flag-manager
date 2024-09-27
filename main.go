@@ -2,16 +2,29 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "<h1>Hello world!</h1>")
+type Data struct {
+	Name string
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("templates/index.html")
+
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	t.Execute(w, Data{Name: "John Doe"})
 }
 
 func main() {
-	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/", handler)
 
 	fmt.Println("Server is running on port 8000")
 
