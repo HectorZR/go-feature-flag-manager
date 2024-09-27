@@ -8,4 +8,8 @@ import (
 
 func Setup() {
 	http.HandleFunc("/", controllers.HomeController)
+
+	http.HandleFunc("POST /counter", controllers.IncreaseCounterController)
+
+	http.HandleFunc("POST /restart-counter", controllers.RestartCounterController)
 }
