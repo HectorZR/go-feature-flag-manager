@@ -3,13 +3,14 @@ package routes
 import (
 	"net/http"
 
-	"hectorzurga.com/feature-flag-manager/controllers"
+	c "hectorzurga.com/feature-flag-manager/controllers"
+	m "hectorzurga.com/feature-flag-manager/middlewares"
 )
 
 func Setup() {
-	http.HandleFunc("/", controllers.HomeController)
+	http.Handle("/", m.AuthMiddleware(http.HandlerFunc(c.HomeController)))
 
-	http.HandleFunc("POST /counter", controllers.IncreaseCounterController)
+	http.HandleFunc("POST /counter", c.IncreaseCounterController)
 
-	http.HandleFunc("POST /restart-counter", controllers.RestartCounterController)
+	http.HandleFunc("POST /restart-counter", c.RestartCounterController)
 }

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -26,7 +26,7 @@ func IncreaseCounterController(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("templates/counter.html")
 
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return
 	}
 
@@ -39,7 +39,7 @@ func RestartCounterController(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("templates/counter.html")
 
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return
 	}
 

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -10,9 +10,15 @@ func HomeController(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("templates/index.html")
 
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return
 	}
 
-	t.Execute(w, nil)
+	err = t.Execute(w, nil)
+
+	if err != nil {
+		log.Println(err)
+		http.Redirect(w, r, "/", 404)
+	}
+
 }
