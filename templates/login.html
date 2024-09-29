@@ -1,41 +1,59 @@
-<form
-    hx-post="/login"
-    id="login-form"
-    hx-swap="outerHTML"
-    hx-target="#login-form"
->
-    <div class="mb-4">
-        <label
-            for="username"
-            class="block text-gray-700 text-sm font-bold mb-2"
-        >
-            Username
-        </label>
-        <input
-            type="text"
-            name="username"
-            id="username"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-    </div>
-    <div class="mb-6">
-        <label for="password" class="block text-gray-700 text-sm font-bold mb-2"
-            >Password</label
-        >
-        <input
-            type="password"
-            name="password"
-            id="password"
-            class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-        />
-    </div>
-    <div class="flex items -center justify-between">
-        <button
-            type="submit"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            hx-post="/login"
-        >
-            Sign In
-        </button>
-    </div>
-</form>
+<html>
+    <head>
+        <title>Feature Flag Manager</title>
+        <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="container mx-auto">
+            <h1 class="text-xl text-center mt-10 pb-5">Feature Flag Manager</h1>
+            <div class="flex justify-center">
+                <div class="w-1/3" id="main">
+                    <form
+                        hx-post="/login"
+                        id="login-form"
+                        hx-swap="outerHTML"
+                        hx-target="#login-form"
+                    >
+                        <div class="mb-4">
+                            <label
+                                for="username"
+                                class="block text-gray-700 text-sm font-bold mb-2"
+                            >
+                                Username
+                            </label>
+                            <input
+                                type="text"
+                                name="username"
+                                id="username"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            />
+                        </div>
+                        <div class="mb-6">
+                            <label
+                                for="password"
+                                class="block text-gray-700 text-sm font-bold mb-2"
+                                >Password</label
+                            >
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                            />
+                        </div>
+                        <div class="flex items -center justify-between">
+                            <button
+                                type="submit"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                hx-post="/login"
+                            >
+                                Sign In
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

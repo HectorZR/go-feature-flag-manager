@@ -8,7 +8,12 @@ import (
 )
 
 func Setup() {
-	http.Handle("/", m.AuthMiddleware(http.HandlerFunc(c.HomeController)))
+	http.HandleFunc("/", c.HomeController)
+
+	http.HandleFunc("GET /login", c.LoginView)
+	http.HandleFunc("POST /login", c.LoginController)
+
+	http.Handle("POST /logout", m.AuthMiddleware(http.HandlerFunc(c.LogoutController)))
 
 	http.HandleFunc("POST /counter", c.IncreaseCounterController)
 

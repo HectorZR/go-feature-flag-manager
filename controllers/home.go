@@ -20,5 +20,4 @@ func HomeController(w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 		http.Redirect(w, r, "/", 404)
 	}
-
 }
