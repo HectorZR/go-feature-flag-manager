@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -10,6 +11,7 @@ import (
 func main() {
 	routes.Setup()
 
-	log.Println("Server is running on port 8000")
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	port := 8000
+	log.Println("Server is running on port", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
