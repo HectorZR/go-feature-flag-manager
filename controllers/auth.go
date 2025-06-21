@@ -54,7 +54,7 @@ func LoginController(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func LogoutController(w http.ResponseWriter, r *http.Request) {
+var LogoutController http.HandlerFunc = func(w http.ResponseWriter, r *http.Request) {
 	log.Print("Logout user")
 
 	http.SetCookie(w, &http.Cookie{

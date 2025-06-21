@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func HomeController(w http.ResponseWriter, r *http.Request) {
+var HomeController http.HandlerFunc = func(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("templates/index.html")
 
 	if err != nil {

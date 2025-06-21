@@ -6,7 +6,7 @@ import (
 	"hectorzurga.com/feature-flag-manager/constants"
 )
 
-func AuthMiddleware(next http.Handler) http.Handler {
+func AuthMiddleware(next http.Handler) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie(constants.AUTH_COOKIE_NAME)
 

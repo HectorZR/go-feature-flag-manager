@@ -1,21 +1,17 @@
 package routes
 
 import (
-	"net/http"
-
 	c "hectorzurga.com/feature-flag-manager/controllers"
 	m "hectorzurga.com/feature-flag-manager/middlewares"
 )
 
 func Setup() {
-	http.HandleFunc("/", c.HomeController)
+	var router Router
 
-	http.HandleFunc("GET /login", c.LoginView)
-	http.HandleFunc("POST /login", c.LoginController)
-
-	http.Handle("POST /logout", m.AuthMiddleware(http.HandlerFunc(c.LogoutController)))
-
-	http.HandleFunc("POST /counter", c.IncreaseCounterController)
-
-	http.HandleFunc("POST /restart-counter", c.RestartCounterController)
+	router.Get("/", c.HomeController)
+	router.Get("/login", c.LoginView)
+	router.Post("/login", c.LoginController)
+	router.Post("/logout", m.AuthMiddleware(c.LogoutController))
+	router.Post("/counter", c.IncreaseCounterController)
+	router.Post("/restart-counter", c.RestartCounterController)
 }
